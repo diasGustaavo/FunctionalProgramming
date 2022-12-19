@@ -1,0 +1,34 @@
+<h1>Listing Carsavailable</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Fabyear</th>
+      <th>Modelyear</th>
+      <th>Price</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for car <- @carsavailable do %>
+    <tr>
+      <td><%= car.brand %></td>
+      <td><%= car.model %></td>
+      <td><%= car.fabYear %></td>
+      <td><%= car.modelYear %></td>
+      <td><%= car.price %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.car_path(@conn, :show, car) %></span>
+        <span><%= link "Edit", to: Routes.car_path(@conn, :edit, car) %></span>
+        <span><%= link "Delete", to: Routes.car_path(@conn, :delete, car), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Car", to: Routes.car_path(@conn, :new) %></span>
