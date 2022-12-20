@@ -17,7 +17,7 @@ defmodule CarsWeb.Router do
   scope "/", CarsWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", CarController, :index
     resources "/carsavailable", CarController
   end
 

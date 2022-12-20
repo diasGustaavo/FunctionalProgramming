@@ -1,34 +1,44 @@
-<h1>Listing Carsavailable</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/cars.css")}/>
+  </head>
 
-<table>
-  <thead>
-    <tr>
-      <th>Brand</th>
-      <th>Model</th>
-      <th>Fabyear</th>
-      <th>Modelyear</th>
-      <th>Price</th>
+  <body>
+    <h1>Available Cars in Store</h1>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for car <- @carsavailable do %>
-    <tr>
-      <td><%= car.brand %></td>
-      <td><%= car.model %></td>
-      <td><%= car.fabYear %></td>
-      <td><%= car.modelYear %></td>
-      <td><%= car.price %></td>
+    <table>
+      <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Model</th>
+          <th>Fabyear</th>
+          <th>Modelyear</th>
+          <th>Price</th>
 
-      <td>
-        <span><%= link "Show", to: Routes.car_path(@conn, :show, car) %></span>
-        <span><%= link "Edit", to: Routes.car_path(@conn, :edit, car) %></span>
-        <span><%= link "Delete", to: Routes.car_path(@conn, :delete, car), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    <%= for car <- @carsavailable do %>
+        <tr>
+          <td><%= car.brand %></td>
+          <td><%= car.model %></td>
+          <td><%= car.fabYear %></td>
+          <td><%= car.modelYear %></td>
+          <td><%= car.price %></td>
 
-<span><%= link "New Car", to: Routes.car_path(@conn, :new) %></span>
+          <td>
+            <span><%= link "Show Model", to: Routes.car_path(@conn, :show, car) %></span><br/>
+            <span><%= link "Edit Advertising", to: Routes.car_path(@conn, :edit, car) %></span><br/>
+            <span><%= link "Delete Car", to: Routes.car_path(@conn, :delete, car), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+    <button><%= link "New Car", to: Routes.car_path(@conn, :new) %></button>
+
+  </body>
+</html>
